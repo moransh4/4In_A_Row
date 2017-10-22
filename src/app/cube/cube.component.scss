@@ -1,0 +1,19 @@
+span{
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    &.red{
+       background-color: red;
+    }
+    &.blue{
+       background-color: blue;
+    }
+    &.empty{
+        background-color: #cccc00;
+    }
+}
