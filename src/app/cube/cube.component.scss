@@ -7,6 +7,8 @@ span{
     left: 50%;
     position: absolute;
     transform: translate(-50%,-50%);
+    // background: radial-gradient(circle at 50% 120%,  #323232, #0a0a0a 80%, #000000 100%);
+
     &.red{
        background-color: red;
     }
@@ -17,3 +19,5 @@ span{
         background-color: #cccc00;
     }
 }
+
+
