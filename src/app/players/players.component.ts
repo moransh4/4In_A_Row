@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AppComponent } from '../app.component';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -31,12 +32,14 @@ export class PlayersComponent implements OnInit{
 
     startGame() {
     if (this.players[0].name.trim() != '' && this.players[1].name.trim() != '') {
+      $('canvas').remove();
       this.start_game = true;
       this.playersUpdated.emit({ players : this.players, start: this.start_game });
     }
   }
 
   resetGame() {
+    $('canvas').remove();    
     this.players[0].name = '';
     this.players[1].name = '';
     this.start_game = false;
