@@ -24,8 +24,7 @@
       "scripts": 
       [
         "./js/classie.js", 
-        "../node_modules/fireworks-canvas/dist/fireworks.min.js", 
-        "../node_modules/jquery/dist/jquery.min.js"
+        "../node_modules/fireworks-canvas/dist/fireworks.min.js"
       ] ,
       "environmentSource": "environments/environment.ts",
       "environments": {

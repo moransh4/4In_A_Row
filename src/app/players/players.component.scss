@@ -6,7 +6,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 form{
-		    float: left;
+			float: left;
+			position: absolute;
+			
 }
 
 .input {
@@ -70,6 +72,9 @@ form{
 	overflow: hidden;
 	width: 150px;
 	display: block;
+	position: relative;
+	z-index: 999;
+	
 }
 
 .input__field--hoshi {

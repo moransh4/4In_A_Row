@@ -3,8 +3,9 @@
 <h1 class="threed">
   {{title}}
 </h1>
-<h2 *ngIf="winner > -1">{{players[winner].name}} Won!!</h2>
-<app-players (playersUpdated)="handleplayersUpdated($event)"></app-players>
+<h2 *ngIf="winner > -1">{{players[winner].name}} Win!!</h2>
+<div class="center">
+  <app-players (playersUpdated)="handleplayersUpdated($event)"></app-players>
   <table cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFF99">
     <tbody>
       <tr>
@@ -19,4 +20,6 @@
       </tr>
     </tbody>
   </table>
+</div>
+
 </div>

@@ -1,6 +1,7 @@
+import { debug } from 'util';
 import { Component, OnInit } from '@angular/core';
-import * as Fireworks from 'fireworks-canvas/dist/fireworks';
 
+declare const Fireworks;
 
 class Position {
   state: boolean;
@@ -39,13 +40,14 @@ export class AppComponent extends Position {
   flag : boolean = false;
   winner : number = -1;
   private cube: Position[][];
-  container : object = document.getElementById('playground');
+  container : object ;
+  fireworks : object;
   options : object = 
   {
-  maxRockets: 3,            // max # of rockets to spawn
-  rocketSpawnInterval: 150, // millisends to check if new rockets should spawn
-  numParticles: 100,        // number of particles to spawn when rocket explodes (+0-10)
-  explosionHeight: 0.2,     // minimum percentage of height of container at which rockets explode
+  maxRockets: 10,            // max # of rockets to spawn
+  rocketSpawnInterval: 20, // millisends to check if new rockets should spawn
+  numParticles: 150,        // number of particles to spawn when rocket explodes (+0-10)
+  explosionHeight: 0.7,     // minimum percentage of height of container at which rockets explode
   explosionChance: 0.08     // chance in each tick the rocket will explode
 }
 
@@ -59,7 +61,7 @@ export class AppComponent extends Position {
   ngOnInit() 
   {
     this.cube = [];
-    const fireworks = new Fireworks.start(this.container, this.options)
+    this.container = document.getElementById('playground');
     for (var i: number = 0; i < this.cells.length; i++) {
       this.cube[i] = [];
       for (var j: number = 0; j < this.cells.length; j++) {
@@ -108,6 +110,7 @@ export class AppComponent extends Position {
               console.log(this.players[this.player], "win!!");
               this.winner = this.player;
               this.flag = true;
+              this.fireworks = new Fireworks.start(this.container, this.options)              
             }
             resolve();
           }, time);
