@@ -21,7 +21,12 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": ["./js/classie.js"] ,
+      "scripts": 
+      [
+        "./js/classie.js", 
+        "../node_modules/fireworks-canvas/dist/fireworks.min.js", 
+        "../node_modules/jquery/dist/jquery.min.js"
+      ] ,
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

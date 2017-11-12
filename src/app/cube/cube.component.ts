@@ -13,7 +13,7 @@ export class CubeComponent implements OnInit {
   ngOnInit() {    
   }
 
-   clicked(event) {
+  clicked(event) {
      console.log(event);
   }
 

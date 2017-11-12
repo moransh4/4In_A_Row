@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as Fireworks from 'fireworks-canvas/dist/fireworks';
+
 
 class Position {
   state: boolean;
@@ -29,21 +31,35 @@ class Position {
 
 })
 export class AppComponent extends Position {
-  title = '4 in a row!';
-  cells = [0, 1, 2, 3, 4, 5, 6, 7];
-  players = [{ name: '', color: 'blue' }, { name: '', color: 'red' }];
-  player = 0;
-  start_game = false;
-  flag = false;
-  winner = -1;
+  title : string = '4 in a row!';
+  cells : number[] = [0, 1, 2, 3, 4, 5, 6, 7];
+  players : any[] = [{ name: '', color: 'blue' }, { name: '', color: 'red' }];
+  player : number = 0;
+  start_game : boolean = false;
+  flag : boolean = false;
+  winner : number = -1;
   private cube: Position[][];
+  container : object = document.getElementById('playground');
+  options : object = 
+  {
+  maxRockets: 3,            // max # of rockets to spawn
+  rocketSpawnInterval: 150, // millisends to check if new rockets should spawn
+  numParticles: 100,        // number of particles to spawn when rocket explodes (+0-10)
+  explosionHeight: 0.2,     // minimum percentage of height of container at which rockets explode
+  explosionChance: 0.08     // chance in each tick the rocket will explode
+}
+
 
 
 
   constructor() {
     super(0, 0);
-    this.cube = [];
+  }
 
+  ngOnInit() 
+  {
+    this.cube = [];
+    const fireworks = new Fireworks.start(this.container, this.options)
     for (var i: number = 0; i < this.cells.length; i++) {
       this.cube[i] = [];
       for (var j: number = 0; j < this.cells.length; j++) {
@@ -52,21 +68,18 @@ export class AppComponent extends Position {
         this.cube[i][j].color = '#cccc00';
       }
     }
+
   }
 
-  startGame() {
-    if (this.players[0].name.trim() != '' && this.players[1].name.trim() != '') {
-      let players = this.players;
-      this.constructor();
-      this.start_game = true;
-      this.players = players;
-    }
+
+  handleplayersUpdated(event) {
+  this.players = event.players;
+  this.start_game = event.start;
+  this.winner = -1;
+  this.flag = false;
+  this.ngOnInit();
   }
 
-  resetGame() {
-    this.start_game = false;
-    this.constructor();
-  }
 
   clicked(event) {
     if (!this.flag && this.start_game) {
@@ -231,42 +244,4 @@ export class AppComponent extends Position {
   }
 }
 
-          setTimeout(() => {
-
-
-	(function() {
-				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
-				if (!String.prototype.trim) {
-					(function() {
-						// Make sure we trim BOM and NBSP
-						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-						String.prototype.trim = function() {
-							return this.replace(rtrim, '');
-						};
-					})();
-				}
-
-				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-					// in case the input is already filled..
-					if( inputEl.value.trim() !== '' ) {
-						classie.add( inputEl.parentNode, 'input--filled' );
-					}
-
-					// events:
-					inputEl.addEventListener( 'focus', onInputFocus );
-					inputEl.addEventListener( 'blur', onInputBlur );
-				} );
-
-				function onInputFocus( ev ) {
-					classie.add( ev.target.parentNode, 'input--filled' );
-				}
-
-				function onInputBlur( ev ) {
-					if( ev.target.value.trim() === '' ) {
-						classie.remove( ev.target.parentNode, 'input--filled' );
-					}
-				}
-			})();
-
-                }, 1000);
-
+         
