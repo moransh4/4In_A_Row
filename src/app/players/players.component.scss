@@ -21,6 +21,19 @@ form{
 	vertical-align: top;
 }
 
+button{
+	width: 80px;
+	height: 50px;
+	background: rgba(230, 142, 186, 0.5);
+	color: white;
+	border: none;
+	outline: none;
+	    margin-left: 15px;
+	&:hover{
+	background: rgb(230, 142, 186);
+	}
+}
+
 .input__field {
 	position: relative;
 	display: block;

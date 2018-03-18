@@ -66,8 +66,8 @@ export class AppComponent extends Position {
       this.cube[i] = [];
       for (var j: number = 0; j < this.cells.length; j++) {
         this.cube[i][j] = new Position(i, j);
-        this.cube[i][j].state = false;
-        this.cube[i][j].color = '#cccc00';
+        this.cube[i][j].state = false; // flase if empty cube = without player
+        this.cube[i][j].color = '#cccc00'; // color of the player - red/blue
       }
     }
 
@@ -87,13 +87,13 @@ export class AppComponent extends Position {
     if (!this.flag && this.start_game) {
       var i = 0;
       this.flag = true;
-      while (this.cube && i < this.cells.length && !this.cube[i][event].state) {
+      while (this.cube && i < this.cells.length && !this.cube[i][event].state) { // while cube is empty
         ((i) => {
           setTimeout(() => {
-            this.cube[i][event].color = this.players[this.player].color;
+            this.cube[i][event].color = this.players[this.player].color; // fill cube with color
           }, 78 * i);
           setTimeout(() => {
-            this.cube[i][event].color = '#cccc00'
+            this.cube[i][event].color = '#cccc00' // return to empty 
           }, 90 * i);
         })(i);
         i++
