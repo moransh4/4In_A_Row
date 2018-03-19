@@ -11,7 +11,7 @@ import { SelectComponent } from './select/select.component';
   declarations: [
     AppComponent,
     CubeComponent,
-    SelectComponent
+    SelectComponent,
   ],
   imports: [
     BrowserModule,
