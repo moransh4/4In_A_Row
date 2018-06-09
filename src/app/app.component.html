@@ -1,9 +1,9 @@
-<!--<app-fireworks ></app-fireworks>-->
 <div class="container" id="playground">
+<app-fireworks *ngIf="winner > -1"></app-fireworks>
 <h1 class="threed">
   {{title}}
 </h1>
-<h2 *ngIf="winner > -1">{{players[winner].name}} Win!!</h2>
+<h2 *ngIf="winner > -1" class="winer" >{{players[winner].name}} Win!!</h2>
 <div class="center">
   <app-players (playersUpdated)="handleplayersUpdated($event)"></app-players>
   <table cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFF99">
