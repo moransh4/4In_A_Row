@@ -1,27 +1,12 @@
-<div class="container">
-  <h1 class="threed">
-    {{title}}
-  </h1>
-  <h2 *ngIf="winner > -1">{{players[winner].name}} Won!!</h2>
-  <form  class="content">
-    <div class="form-group">
-				<span class="input input--hoshi">
-					<input class="input__field input__field--hoshi" type="text" name="player1" id="player1" [(ngModel)]="players[0].name" />
-					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="player1">
-						<span class="input__label-content input__label-content--hoshi">Player 1</span>
-					</label>
-				</span>
-				<span class="input input--hoshi">
-					<input class="input__field input__field--hoshi" type="text" name="player2" id="player2" [(ngModel)]="players[1].name" />
-					<label class="input__label input__label--hoshi input__label--hoshi-color-3" for="player2">
-						<span class="input__label-content input__label-content--hoshi">Player 2</span>
-					</label>
-				</span>
-      <button *ngIf="!start_game" type="submit" (click)="startGame()">Play</button>
-        <button *ngIf="start_game" (click)="resetGame()">reset</button>
-
-    </div>
-  </form>  <table cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFF99">
+<div class="container" id="playground">
+<app-fireworks *ngIf="winner > -1"></app-fireworks>
+<h1 class="threed">
+  {{title}}
+</h1>
+<h2 *ngIf="winner > -1" class="winer" >{{players[winner].name}} Win!!</h2>
+<div class="center">
+  <app-players (playersUpdated)="handleplayersUpdated($event)"></app-players>
+  <table cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFF99">
     <tbody>
       <tr>
         <td *ngFor="let j of cells">
@@ -35,4 +20,6 @@
       </tr>
     </tbody>
   </table>
+</div>
+
 </div>
